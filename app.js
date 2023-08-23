@@ -14,15 +14,17 @@ const http = require('http')
 // console.log(currentOS)
 //req => request we are getting 
 //res => response we are sending
-const server = http.createServer((req,res) =>{
-if(req.url === '/')
-{
-    res.end("Welcome to Vansh's Home Page with NodeJS")
-}
-if(req.url === '/about')
-{
-    res.end("Vansh's About Page")
-}
+
+//1st approach - normal
+// const server = http.createServer((req,res) => {
+//     res.end('Wassup')
+// })
+
+//2nd approach - using event
+const server = http.createServer()
+
+server.on('request', (req,res) => {
+    res.end('Wassup')
 })
 
 server.listen(5000)
